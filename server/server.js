@@ -9,6 +9,30 @@ import { Server } from "socket.io";
 
 import connectDB from "./config/db.js";
 
+const logs = [];
+const originalLog = console.log;
+const originalError = console.error;
+
+console.log = (...args) => {
+    logs.push({ type: 'log', time: new Date().toISOString(), message: args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ') });
+    if (logs.length > 500) logs.shift();
+    originalLog(...args);
+};
+
+console.error = (...args) => {
+    logs.push({ type: 'error', time: new Date().toISOString(), message: args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ') });
+    if (logs.length > 500) logs.shift();
+    originalError(...args);
+};
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+process.on('uncaughtException', (err) => {
+    console.error('Uncaught Exception thrown:', err);
+});
+
 import authRoutes from "./Routes/Auth.js";
 import complaintRoutes from "./Routes/Complaint.js";
 import adminRoutes from "./Routes/Admin.js";
@@ -27,6 +51,10 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json());
+
+app.get("/api/debug/logs", (req, res) => {
+    res.json(logs);
+});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/complaints", complaintRoutes);
