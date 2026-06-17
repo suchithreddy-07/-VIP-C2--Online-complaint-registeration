@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "/api",
+  baseURL: import.meta.env.PROD ? "https://complaint-registeration.onrender.com/api" : "/api",
   headers: {
     "Content-Type": "application/json",
   },
