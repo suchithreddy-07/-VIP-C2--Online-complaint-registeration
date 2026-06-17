@@ -37,8 +37,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "*",
-        methods: ["GET", "POST"]
+        origin: "https://vip-c2-online-complaint-registerati.vercel.app"
     }
 });
 
