@@ -77,12 +77,11 @@ router.post("/register", async (req, res) => {
         });
 
     } catch (error) {
-
+        console.error("Registration endpoint error:", error);
         res.status(500).json({
             success: false,
             message: error.message
         });
-
     }
 });
 
@@ -141,12 +140,11 @@ router.post("/login", async (req, res) => {
         });
 
     } catch (error) {
-
+        console.error("Login endpoint error:", error);
         res.status(500).json({
             success: false,
             message: error.message
         });
-
     }
 });
 
