@@ -1,3 +1,4 @@
+// Trigger nodemon restart to load updated MONGO_URI from .env
 import dotenv from "dotenv";
 dotenv.config();
 
