@@ -8,7 +8,7 @@ A scalable complaint management platform built using the MERN Stack (MongoDB, Ex
 
 ### Frontend
 
-https://vip-c2-online-complaint-registration.vercel.app
+https://vip-c2-online-complaint-registration.vercel.app/
 
 ### Backend API
 
