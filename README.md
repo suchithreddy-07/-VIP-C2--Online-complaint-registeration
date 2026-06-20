@@ -226,13 +226,7 @@ npm start
 cd client
 npm install
 npm run dev
-```
 
-Frontend runs on:
-
-```text
-http://localhost:5173
-```
 
 ---
 
