@@ -208,7 +208,7 @@ Create a `.env` file:
 
 ```env
 PORT=5000
-MONGO_URI=your_mongodb_connection_string
+MONGO_URI=mongodb+srv://suchithreddy2007_db_user:FDCXglSItuiU8S59@complaint-registeration.yidsaja.mongodb.net/?appName=Complaint-registeration
 JWT_SECRET=your_jwt_secret
 ```
 
